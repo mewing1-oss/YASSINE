@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            // Validation du formulaire
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const genre = document.querySelector('input[name="genre"]:checked');
+            const city = document.getElementById("city").value;
+
+            if (!name || !email || !genre || !city) {
+                alert("Tous les champs sont obligatoires !");
+                return;
+            }
+
+            // Redirection après validation
+            window.location.href = "TP1-Votrenom.html";
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulaire</h1>
+    <div class="container">
+        <form onsubmit="validateForm(event)">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" placeholder="Votre nom">
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" placeholder="Votre email">
+
+            <label>Genre :</label>
+            <input type="radio" id="homme" name="genre" value="Homme">
+            <label for="homme">Homme</label>
+            <input type="radio" id="femme" name="genre" value="Femme">
+            <label for="femme">Femme</label>
+
+            <label for="city">Ville :</label>
+            <select id="city">
+                <option value="">-- Sélectionnez une ville --</option>
+                <option value="Casablanca">Casablanca</option>
+                <option value="Rabat">Rabat</option>
+                <option value="Marrakech">Marrakech</option>
+                <option value="Fès">Fès</option>
+                <option value="Tanger">Tanger</option>
+            </select>
+
+            <label for="preference">Préférence :</label>
+            <input type="text" id="preference" placeholder="Votre préférence">
+
+            <label for="comments">Commentaires :</label>
+            <textarea id="comments" placeholder="Vos commentaires"></textarea>
+
+            <div class="buttons">
+                <button type="reset">Nouveau</button>
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
